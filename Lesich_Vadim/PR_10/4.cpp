@@ -1,51 +1,77 @@
 #include <iostream>
-#include <map>
-#include <string>
-#include <algorithm>
- 
+#include <fstream>
+#include <string.h>
+#include <cstdlib>
+#include <time.h>
 using namespace std;
- 
-typedef map<int, string> TokensMap;
- 
-void replace_numbers(string& _sBuffer, TokensMap& _mTokens);
- 
-int main(int argc, char* argv[])
-{
-    string sBuffer("123");
-    
-    TokensMap mTokens;
-    mTokens[0] = "_zero_";
-    mTokens[1] = "_one_";
-    mTokens[2] = "_two_";
-    mTokens[3] = "_three_";
-    mTokens[4] = "_four_";
-    mTokens[5] = "_five_";
-    mTokens[6] = "_six_";
-    mTokens[7] = "_seven_";
-    mTokens[8] = "_eigth_";
-    mTokens[9] = "_nine_";
- 
-    replace_numbers(sBuffer, mTokens);
-    cout << sBuffer << endl;
- 
-    system("pause");
-    return EXIT_SUCCESS;
+int a;
+int createFile(char *path){
+    ofstream file(path);
+	if(!file.is_open()){
+		cout << "File cannot be opened or readed";
+		return 1;
+	}
+    file.close();
+	return 0;         
 }
- 
-void replace_numbers(string& _sBuffer, TokensMap& _mTokens)
-{
-    char cNum;
-    int nIndex;
-    string::iterator itrNumPos = find_if(_sBuffer.begin(), _sBuffer.end(), isdigit);
- 
-    while (itrNumPos != _sBuffer.end())
-    {
-        cNum = *itrNumPos;
-        nIndex = atoi(&cNum);
-        _sBuffer.replace(itrNumPos, 
-                itrNumPos + 1, 
-                _mTokens.at(nIndex).begin(), 
-                _mTokens.at(nIndex).end());
-        itrNumPos = find_if(_sBuffer.begin(), _sBuffer.end(), isdigit);
-    }
+void writenumbers(char *path){
+	ofstream file(path);
+	for(int i = 0; i < 15; i++){
+		file << rand() << endl; 
+	}
+	file.close();
+}
+void readFile(char *path){
+      char buff;
+      ifstream file(path);
+      while(!file.eof()){
+      buff = file.get();
+      a = static_cast<int>(buff);
+      switch(buff){
+      	case '0':
+      		cout << "zero" << " ";
+      		break;
+      	case '1':
+      		cout << "one" << " ";
+      		break;
+      	case '2':
+      		cout << "two" << " ";
+      		break;
+		case '3': 
+      		cout << "three" << " ";
+      		break;      	
+      	case '4': 
+      		cout << "four" << " ";
+      		break;      		
+      	case '5': 
+      		cout << "five" << " ";
+      		break;
+      	case '6': 
+      		cout << "six" << " ";
+      		break;
+      	case '7': 
+      		cout << "seven" << " ";
+      		break;
+      	case '8': 
+      		cout << "eight" << " ";
+      		break;
+      	case '9':
+      		cout << "nine" << " ";
+      		break;
+	  }
+	  if(a == '\n')
+	  	cout << endl;
+      }
+      file.close();
+}
+
+
+
+main (){
+	srand(time(NULL));
+	char path[] = "2.txt";
+	createFile(path);
+	writenumbers(path);
+	readFile(path);
+    system("pause");     
 }

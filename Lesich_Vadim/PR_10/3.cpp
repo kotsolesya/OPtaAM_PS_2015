@@ -2,34 +2,48 @@
 #include <fstream>
 #include <string.h>
 #include <cstdlib>
-#include <algorithm>
+#include <time.h>
 using namespace std;
-
-void createFile(){
-     char a;
-      ofstream file("B://numbers.csv");
-	  file << "1,2,3,4,5,7,8,235,4215,4246,26,2356,235";
-      file.close();         
-}      
-bool is_digits(const std::string &str)
-{
-    return all_of(str.begin(), str.end(), ::isdigit);
+int a, counter = 0;
+int createFile(char *path){
+    ofstream file(path);
+	if(!file.is_open()){
+		cout << "File cannot be opened or readed";
+		return 1;
+	}
+    file.close();
+	return 0;         
 }
-int readFile(){
+void writenumbers(char *path){
+	ofstream file(path);
+	for(int i = 0; i < 15; i++){
+		file << rand() << endl; 
+	}
+	file.close();
+}
+void readFile(char *path){
       string buff;
-      fstream file("B://numbers.csv");
-if (!file) {
-cout << "Cannot open file.\n";}
-      while(!file.eof()){               
-      getline(file, buff);
-      if(is_digits(buff)%3==0){
-                             cout <<buff<< endl;}
-                             }
+      ifstream file(path);
+      while(!file.eof()){
+      getline(file,  buff); 
+      if(buff.length()!= 0){
+      a = atoi(buff.c_str());
+      if(a % 3 == 0){
+      	counter++;
+      	cout << buff << endl;
+	  }
+      }
+  }
       file.close();         
 }
+
 
 main (){
-     createFile();
-     readFile();
-     system("pause");     
+	srand(time(NULL));
+	char path[] = "2.txt";
+	createFile(path);
+	writenumbers(path);
+	readFile(path);
+	cout << "The number of digits that is divided on 3 is: " << counter << endl;
+    system("pause");     
 }
