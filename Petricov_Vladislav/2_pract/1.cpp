@@ -2,7 +2,7 @@
 
 using namespace std;
 
-void PIB(string a = "Фамилия : Петриков",  string b = "Имя : Владислав" ,  string c = "Рейтинговый бал : 4.0")
+void PIB(string a = "Surname : Petrikov",  string b = "Name : Vladislav" ,  string c = "rating point : 4.0")
 {
 	cout << a << endl;
 	cout << b << endl;
@@ -12,9 +12,8 @@ void PIB(string a = "Фамилия : Петриков",  string b = "Имя : Владислав" ,  strin
 
 int main()
 {
-	setlocale(LC_ALL,"Russian");
 	string a;
-	cout << "Информация о студенте : " << endl << endl;
+	cout << "Information for student : " << endl << endl;
 	PIB();
 	cout << "" << endl;
 	system("pause");

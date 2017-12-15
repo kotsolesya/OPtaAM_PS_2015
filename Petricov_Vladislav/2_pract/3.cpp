@@ -24,11 +24,10 @@ int min_element(const int *a, const int size)
 
 int main()
 {
-	setlocale(LC_ALL,"Russian");
-	cout << "¬ведите значени€ масива сост€щего из 10 елементов : " << endl;
+	cout << "enter the value of an array of 10 elements : " << endl;
 	const int size = 10;
 	int arr[size];
 	input(arr, size);
-	cout << "ћинимальный елемент масива : " << min_element(arr, size) << endl;
+	cout << "Min element : " << min_element(arr, size) << endl;
 	system("pause");
 }
