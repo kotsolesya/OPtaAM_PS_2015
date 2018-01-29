@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
+#include <time.h>
 using namespace std;
 void QuickSort(int *arr, int left, int right) 
 {
@@ -30,7 +31,7 @@ int* makeRandomArray(int size) {
 int* array = new int[size];
 srand(time(NULL));
 for (int i = 0; i < size; i++) {
-array[i] = (100.0 * rand()) / RAND_MAX;
+array[i] = (100 * rand()) / RAND_MAX;
 }
 return array;
 }
@@ -40,8 +41,10 @@ cout << arr[i] << " ";
 }
 }
 
-int main() {
-int size = 10000; //измен кол. 100-100к
+int main() 
+{
+    
+int size = 100000; //измен кол. 100-100к
 
 int *array = makeRandomArray(size);
 
@@ -49,6 +52,8 @@ QuickSort(array, 0, size);
 
 printArray(array, size);
 delete [] array;
+clock_t t2 = clock();
+   cout << "Time: " << (double) (t2-1) / (double)CLOCKS_PER_SEC << '\n';
 system ("pause");
 return 0;
 }

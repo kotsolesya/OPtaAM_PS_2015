@@ -27,19 +27,15 @@ main(){
 	switch(key){
 		case 1:
 			bubble(numbers, size);
-			//printArr(numbers, size);
 			break;
 		case 2:
 			selection(numbers, size);
-			//printArr(numbers, size);
 			break;
 		case 3: 
 			insertion(numbers, size);
-			//printArr(numbers, size);
 			break;
 		case 4:
 			shell(numbers, size);
-			//printArr(numbers, size);
 			break;
 		default: 
 			cout << "Wrong number!!" << endl;	
@@ -111,34 +107,3 @@ void printArr(int *array, int length){
 		cout << array[i] << " ";
 	}
 }
-/* void quicksort (int *array,int lenght) 
-int 
-for ();
-*/
-
-/*
-
-
-void quickSort(int arr[], int left, int right) {
-      int i = left, j = right;
-      int tmp;
-      int pivot = arr[(left + right) / 2];
-      /* partition */
-      /*while (i <= j) {
-            while (arr[i] < pivot)
-                  i++;
-            while (arr[j] > pivot)
-                  j--;
-            if (i <= j) {
-                  tmp = arr[i];
-                  arr[i] = arr[j];
-                  arr[j] = tmp;
-                  i++;
-                  j--;
-            }
-      };
-      /* recursion */
-      /*if (left < j)
-            quickSort(arr, left, j);
-      if (i < right)
-            quickSort(arr, i, right);*/
